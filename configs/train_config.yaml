@@ -1,0 +1,31 @@
+data:
+  train: data/train.csv
+  test: data/test.csv
+  processed: data/processed.csv
+  target_column: Survived
+
+preprocessing:
+  input_path: data/train.csv
+  output_path: data/processed.csv
+  drop_columns: ['PassengerId', 'Name', 'Ticket', 'Cabin']
+  fillna:
+    Age: 30
+    Embarked: 'S'
+
+
+model:
+  type: LightGBM
+  params:
+    num_leaves: 31
+    learning_rate: 0.05
+    n_estimators: 20
+
+training:
+  test_size: 0.2
+  random_state: 42
+  cv: 5
+  scoring:
+    metric: accuracy
+  model_save_path: models/trained_model.pkl
+
+  
