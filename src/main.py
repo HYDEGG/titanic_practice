@@ -12,7 +12,7 @@ def main(config_path: str):
     config = load_config(config_path)
 
     print("Step 1: Preprocessing")
-    preprocess.run(config)
+    preprocess.preprocess_data(config)
 
     print("Step 2: Training")
     model_path = train.run(config)
